@@ -12,6 +12,16 @@ use ApiClientGitlab\Entity;
 class Job extends Entity
 {
     /**
+     *  Status Jobs failed
+     */
+    const STATUS_FAILLED = 'failed';
+
+    /**
+     * Status Jobs Passed
+     */
+    const STATUS_PASSED = 'success';
+
+    /**
      * @var string $status
      */
     protected $status;

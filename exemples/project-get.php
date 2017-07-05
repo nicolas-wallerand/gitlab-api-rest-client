@@ -31,6 +31,6 @@ $result = $serviceProjects->get('3632147');
 
 if ($result->success()) {
     dump($result->current());
-}else {
+} else {
     dump($result->getMessage(),$result->getResponse());
 }

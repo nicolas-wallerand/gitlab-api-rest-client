@@ -38,6 +38,5 @@ if ($result->success()) {
         'The index of the current page (starting at 1)' => $result->getIndexCurrentPage(),
         'The index of the next page'                    => $result->getIndexOfNextPage(),
         'The index of the previous page'                => $result->getIndexOfPrevPage(),
-
     ]);
 }

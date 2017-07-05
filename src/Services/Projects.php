@@ -40,15 +40,22 @@ class Projects extends Services
     }
 
     /**
-     * @return ResultCollections
+     * @return ResultsetError|ResultSimple
+     * @throws \Exception
      */
     public function getAll()
     {
-        $response = $this->getClient()->get('projects', [
-            'private_token' => 'Hy-XoDMsoWmzBhivSX3N',
-        ]);
+        try {
+            $response = $this->getClient()->get('projects');
+            $result = new ResultCollections($response);
+        } catch (RequestException $e) {
 
-        $result = new ResultCollections($response);
+            if ($e->hasResponse() && $e->getResponse()->getStatusCode() === 404) {
+                $result = new ResultsetError($e->getResponse());
+            } else {
+                throw new \Exception($e->getResponse());
+            }
+        }
 
         return $result;
     }

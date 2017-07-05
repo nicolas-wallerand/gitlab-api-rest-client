@@ -5,11 +5,11 @@ namespace ApiClientGitlab\Commands;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 /**
- * Class JobsCommand
+ * Class UsersCommand
  *
  * @package ApiClientGitlab\Command
  *
- * ex : php gitlab.php jobs:status 2882660 20995515
+ * ex : php mattermost.php jobs:status 2882660 20995515
  */
 class Command extends SymfonyCommand
 {

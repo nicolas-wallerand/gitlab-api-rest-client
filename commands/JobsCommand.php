@@ -2,6 +2,7 @@
 
 namespace ApiClientGitlab\Commands;
 
+use ApiClientGitlab\Services\Entities\Job;
 use ApiClientGitlab\Services\Jobs;
 use ApiClientGitlab\ApiClient;
 use Symfony\Component\Console\Input\InputArgument;
@@ -9,11 +10,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class JobsCommand
+ * Class UsersCommand
  *
  * @package ApiClientGitlab\Command
- *
- * ex : php gitlab.php jobs:status 2882660 20995515
  */
 class JobsCommand extends Command
 {
@@ -35,6 +34,8 @@ class JobsCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
+     * ex : php mattermost.php jobs:status <id_project> <id_jobs>
+     *
      * @return int|null|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -46,15 +47,22 @@ class JobsCommand extends Command
         $client = new ApiClient($endpoint, $token, $type);
         $serviceProjects = new Jobs($client);
 
-        $projectId = $input->getArgument('id_project');//'2882660';
-        $idJobs = $input->getArgument('id_jobs');//'20995515';
+        $projectId = $input->getArgument('id_project');
+        $idJobs = $input->getArgument('id_jobs');
         $result = $serviceProjects->get($projectId, $idJobs);
 
         if ($result->success()) {
-            $output->writeln('<fg=green>' . $result->current()->getStatus() . '</>');
-            //dump($result->current());
+
+            $job = $result->current();
+
+            if($job->getStatus() === Job::STATUS_FAILLED) {
+                $output->writeln('<fg=red>' . $result->current()->getStatus() . '</>');
+            }elseif($job->getStatus() === Job::STATUS_PASSED) {
+                $output->writeln('<fg=green>' . $result->current()->getStatus() . '</>');
+            }else {
+                $output->writeln($result->current()->getStatus());
+            }
         } else {
-            // dump($result->getMessage(),$result->getResponse());
             $output->writeln('<fg=red>ERROR : ' . $result->getMessage() . '</>');
         }
     }

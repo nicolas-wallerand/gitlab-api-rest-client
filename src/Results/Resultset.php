@@ -22,12 +22,18 @@ abstract class Resultset implements ResultsetInterface
     /**
      * Resultset constructor.
      *
-     * @param $response
+     * @param \GuzzleHttp\Psr7\Response $response
+     * @throws \Exception
      */
     public function __construct(\GuzzleHttp\Psr7\Response $response)
     {
         $this->response = $response;
-        $this->rows = json_decode($response->getBody(), true);;
+
+        if($response->getHeader('Content-Type')[0] === 'application/json') {
+            $this->rows = json_decode($response->getBody(), true);;
+        } else {
+            throw new \Exception('Response content-Type not found');
+        }
     }
 
     /**
