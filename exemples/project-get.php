@@ -27,7 +27,7 @@ $endpoint = getenv('GITLAB_ENDPOINT');
 $client = new ApiClient($endpoint, $token, $type);
 $serviceProjects = new Projects($client);
 
-$result = $serviceProjects->get('3632147');
+$result = $serviceProjects->get('470');
 
 if ($result->success()) {
     dump($result->current());

@@ -76,7 +76,6 @@ class ApiClient
      */
     public function __construct($endpoint, $token, $typeAccessToken, Client $httpClient = null)
     {
-
         if (!isset($token)) {
             throw new Exceptions\InvalidParameterException("Application token parameter is empty");
         }
