@@ -3,9 +3,10 @@
   "description": "Gitlab Sdk ",
   "require": {
     "guzzlehttp/guzzle": "^6.0",
-    "symfony/var-dumper": "^3.2",
-    "vlucas/phpdotenv": "^2.4",
-    "symfony/console": "^3.3"
+    "vlucas/phpdotenv": "^2.4"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^3.2"
   },
   "autoload-dev": {
     "psr-4": {
@@ -14,8 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "ApiClientGitlab\\": "src/",
-      "ApiClientGitlab\\Commands\\": "commands/"
+      "ApiClientGitlab\\": "src/"
     }
   }
 }

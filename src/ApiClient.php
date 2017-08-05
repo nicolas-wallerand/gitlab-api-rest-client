@@ -219,7 +219,6 @@ class ApiClient
             $headers['Authorization'] = 'PRIVATE-TOKEN ' . $this->token;
         }*/
 
-
         /** @var Response $response */
         $response = $this->httpClient->send($request, ['headers' => $headers]);
 
