@@ -1,1 +1,1 @@
-# GITLAB Api rest client for PHP
+# Gitlab Api rest client for PHP
