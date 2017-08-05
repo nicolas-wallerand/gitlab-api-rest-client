@@ -1,6 +1,6 @@
 {
-  "name": "Gitlab/sdk",
-  "description": "Gitlab Sdk ",
+  "name": "gitlab-api-rest-client",
+  "description": "Gitlab api rest client ",
   "require": {
     "guzzlehttp/guzzle": "^6.0",
     "vlucas/phpdotenv": "^2.4"
