@@ -1,1 +1,1 @@
-# GITLAB tools Sdk
+# GITLAB Api rest client for PHP
