@@ -1,5 +1,5 @@
 {
-  "name": "gitlab-api-rest-client",
+  "name": "nicolas-wallerand/gitlab-api-rest-client",
   "description": "Gitlab api rest client ",
   "require": {
     "guzzlehttp/guzzle": "^6.0",
